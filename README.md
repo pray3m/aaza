@@ -20,6 +20,16 @@
 2. Build and Run via Xcode.
 3. The Nepali date will appear in your menu bar immediately.
 
+## 📦 Installation
+
+1. Download the latest `aaza-v*-macOS.zip` from GitHub Releases.
+2. Unzip and move `aaza.app` to `/Applications`.
+3. Open `aaza.app`.
+
+## 🤝 Maintainers
+
+Release/signing/notarization workflow is documented in `RELEASE.md`.
+
 ## ✨ Planned Features
 
 - [ ] **Launch at Login:** Start `aaza` automatically when you boot your Mac.
