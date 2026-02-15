@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct AazaMenuBarUtility: App {
-    @State private var barTitle:String = "🇳🇵 २६ माघ"
+    @State private var todayBS: NepaliDate?
+    @State private var errorText: String?
+    
+    private let ktmTimeZone = TimeZone(identifier: "Asia/Kathmandu")!
+    private let refreshTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    
 
     var body: some Scene {
 //        WindowGroup {
@@ -20,23 +26,20 @@ struct AazaMenuBarUtility: App {
             // Dropdown Content
             VStack(spacing:12) {
                 VStack(spacing:4) {
-                    Text("आज")
-                        .font(.system(size: 12,weight: .medium,design: .default))
+                    Text("आज ")
+                        .font(.system(size: 12,weight: .medium))
                         .foregroundColor(.secondary)
                     
-                    Text("8/2/2083")
+                    Text(todayBS?.compactNepaliDigits ?? "--")
                         .font(.system(size: 24, weight: .semibold, design: .monospaced))
-                        .foregroundColor(.primary)
+                }
+                
+                if let errorText{
+                    Text(errorText).font(.footnote).foregroundColor(.red)
                 }
                 
                 // Action Buttons
-                Button("Today's Date") {
-                    print("fetching...")
-                }
-
-                Button("Settings") {
-                    print("settings")
-                }
+                Button("Refresh") { refreshDate() }
                 
                 Button("Open Calendar") {
                     if let url = URL(string: "https://www.simplepatro.com") {
@@ -44,17 +47,39 @@ struct AazaMenuBarUtility: App {
                     }
                 }
                 
+                Button("Settings") {
+                    print("settings")
+                }
+                
                 Button("Quit App") {
                     NSApplication.shared.terminate(nil)
                 }
             }
+            .padding()
+            .onAppear(perform: refreshDate)
+            .onReceive(refreshTimer){_ in refreshDateIfDayChanged()}
         } label: {
             // THIS is what is visible on the TOP PANEL
-            HStack{
+            HStack {
                 Image(systemName: "calendar.badge.clock")
-                Text(" २६ माघ, २०८२")
+                Text(todayBS?.displayNepaliDigits ?? "...")
                     .fontWeight(.bold)
             }
         }.menuBarExtraStyle(.menu)
+    }
+    
+    private func refreshDate(){
+        do{
+            todayBS = try NepaliDateConverter.todayNepaliDate(timeZone: ktmTimeZone)
+            errorText = nil
+        } catch {
+            errorText = "Date out of supported range"
+        }
+    }
+    
+    private func refreshDateIfDayChanged(){
+        let previous = todayBS
+        refreshDate()
+        if previous == todayBS { return}
     }
 }
