@@ -1,42 +1,50 @@
+<img src="docs/assets/app-icon.png" alt="aaza app icon" width="64" height="64" />
+
 # aaza (आज)
 
-![macOS](https://img.shields.io/badge/platform-macOS-lightgrey)
-![SwiftUI](https://img.shields.io/badge/SwiftUI-orange)
+A minimal macOS menu bar app for Bikram Sambat (Nepali) date.
+
+[![Release](https://img.shields.io/github/v/release/pray3m/aaza)](https://github.com/pray3m/aaza/releases)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)
+![SwiftUI](https://img.shields.io/badge/SwiftUI-native-orange)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-**aaza** is a minimalist, native macOS utility that puts the Nepali date (Bikram Sambat) directly in your menu bar.
+`aaza` keeps today’s Nepali date visible in your macOS menu bar with a native, lightweight UI.
 
-[Screenshot](tools/screenshot.png) (todo: add screenshot)
+## Features
 
-## ⚡️ Highlights
+- Always-visible BS date in the menu bar.
+- Built with `SwiftUI` + `MenuBarExtra`.
+- Kathmandu timezone aware (`Asia/Kathmandu`).
+- Midnight rollover refresh for date changes.
 
-- **Persistent:** The date stays visible in the top panel.
-- **Native:** Built with SwiftUI's `MenuBarExtra` for 0% CPU impact.
-- **Clean:** No Dock icon, no setup—just the date you need.
+## Install
 
-## 🛠 Setup
-
-1. Clone this repo.
-2. Build and Run via Xcode.
-3. The Nepali date will appear in your menu bar immediately.
-
-## 📦 Installation
-
-1. Download the latest `aaza-v*-macOS.zip` from GitHub Releases.
+1. Download the latest `aaza-v*-macOS.zip` from [Releases](https://github.com/pray3m/aaza/releases).
 2. Unzip and move `aaza.app` to `/Applications`.
 3. Open `aaza.app`.
 
-## 🤝 Maintainers
+## Run Locally
 
-Release/signing/notarization workflow is documented in `RELEASE.md`.
+1. Open `aaza.xcodeproj` in Xcode.
+2. Select target `aaza` and run.
+3. The date appears in your menu bar.
 
-## ✨ Planned Features
+## Release
 
-- [ ] **Launch at Login:** Start `aaza` automatically when you boot your Mac.
-- [ ] **Devanagari Toggle:** Switch between English and Nepali numeral/script.
-- [ ] **Quick Copy:** One-click (or shortcut) to copy the current date to clipboard.
-- [ ] **Third party Quick Links:** Directly open full monthly calendars (like Hamro Patro) from the menu.
+Public release/signing/notarization workflow is documented in [`RELEASE.md`](RELEASE.md).
+
+## Roadmap
+
+- [ ] Launch at Login.
+- [ ] Devanagari/English numeral toggle.
+- [ ] Quick copy to clipboard.
+- [ ] Optional quick link to full monthly calendars.
 
 ## License
 
-MIT
+[MIT](LICENSE)
+
+## Contributing
+
+PRs are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).

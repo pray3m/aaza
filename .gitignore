@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Xcode user data and local state
+xcuserdata/
+*.xcuserstate
+
+# Build outputs
+build/
+DerivedData/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Archives and exported apps
+*.xcarchive
+*.ipa
+*.app
