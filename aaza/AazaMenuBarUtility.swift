@@ -7,9 +7,42 @@
 
 import SwiftUI
 
+
+
 @main
 struct AazaMenuBarUtility: App {
     @StateObject private var dateController = MenuBarDateController()
+    
+    @AppStorage("display.numberStyle") private var numberStyleRaw = NumberStyle.devanagari.rawValue
+    @AppStorage("display.monthScript") private var monthScriptRaw = MonthScript.nepali.rawValue
+    @AppStorage("display.formatStyle") private var formatStyleRaw = DateFormatStyle.long.rawValue
+    
+    private var numberStyle: NumberStyle {
+        NumberStyle(rawValue: numberStyleRaw) ?? .devanagari
+    }
+
+    private var monthScript: MonthScript {
+        MonthScript(rawValue: monthScriptRaw) ?? .nepali
+    }
+
+    private var formatStyle: DateFormatStyle {
+        DateFormatStyle(rawValue: formatStyleRaw) ?? .long
+    }
+    
+    private var displayPreferences: DisplayPreferences {
+        DisplayPreferences(
+            numberStyle: numberStyle,
+            monthScript: monthScript,
+            formatStyle: formatStyle
+        )
+    }
+    
+    private var formattedToday: String {
+        guard let today = dateController.todayBS else { return "--" }
+        return DateDisplayFormatter.format(today, preferences: displayPreferences)
+    }
+
+
 
     var body: some Scene {
 //        WindowGroup {
@@ -24,7 +57,7 @@ struct AazaMenuBarUtility: App {
                         .font(.system(size: 12,weight: .medium))
                         .foregroundColor(.secondary)
                     
-                    Text(dateController.todayBS?.compactNepaliDigits ?? "--")
+                    Text(formattedToday)
                         .font(.system(size: 24, weight: .semibold, design: .monospaced))
                 }
                 
@@ -36,7 +69,7 @@ struct AazaMenuBarUtility: App {
                 }
                 
                 // Action Buttons
-                Button("Refresh") { dateController.refreshDate() }
+                Button("Refresh") { dateController.refreshNow() }
                 
                 Button("Open Calendar") {
                     if let url = URL(string: "https://www.simplepatro.com") {
@@ -44,9 +77,7 @@ struct AazaMenuBarUtility: App {
                     }
                 }
                 
-                Button("Settings") {
-                    print("settings")
-                }
+                SettingsLink()
                 
                 Button("Quit App") {
                     NSApplication.shared.terminate(nil)
@@ -55,10 +86,8 @@ struct AazaMenuBarUtility: App {
             .padding()
         } label: {
             // THIS is what is visible on the TOP PANEL
-            HStack {
-                Text(dateController.todayBS?.displayNepaliDigits ?? "--")
-                    .fontWeight(.bold)
-            }
+            Text(formattedToday)
+          
         }.menuBarExtraStyle(.menu)
     }
 

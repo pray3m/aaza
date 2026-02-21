@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct NepaliDate: Equatable {
     let day: Int
     let month: Int
@@ -18,26 +19,10 @@ struct NepaliDate: Equatable {
            "कार्तिक", "मंसिर", "पुष", "माघ", "फागुन", "चैत्र"
        ]
     
-    var monthName: String {
-           guard (1...12).contains(month) else { return "invalid" }
-           return Self.monthNames[month - 1]
-       }
-
-       var displayEnglish: String {
-           "\(day) \(monthName), \(year)"
-       }
-
-       var displayNepaliDigits: String {
-           "\(day.toNepaliDigits()) \(monthName), \(year.toNepaliDigits())"
-       }
-
-       var compactEnglish: String {
-           "\(day)/\(month)/\(year)"
-       }
-
-       var compactNepaliDigits: String {
-           "\(day.toNepaliDigits())/\(month.toNepaliDigits())/\(year.toNepaliDigits())"
-       }
+    static let monthNamesRomanized = [
+        "Baisakh", "Jestha", "Ashadh", "Shrawan", "Bhadra", "Ashwin",
+        "Kartik", "Mangsir", "Poush", "Magh", "Falgun", "Chaitra"
+    ]
 }
 
 extension Int {
