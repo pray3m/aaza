@@ -18,11 +18,26 @@ A minimal macOS menu bar app for Bikram Sambat (Nepali) date.
 - Kathmandu timezone aware (`Asia/Kathmandu`).
 - Midnight rollover refresh for date changes.
 
-## Install
+## Installation
+
+### Option 1: Homebrew (Recommended)
+
+Install and stay up-to-date with Homebrew:
+
+```bash
+brew tap pray3m/tap
+brew install --cask aaza
+```
+
+### Option 2: Manual Download
 
 1. Download the latest `aaza-v*-macOS.zip` from [Releases](https://github.com/pray3m/aaza/releases).
-2. Unzip and move `aaza.app` to `/Applications`.
-3. Open `aaza.app`.
+2. Unzip to get `aaza.app`.
+3. Move `aaza.app` to `/Applications`.
+4. Open `aaza.app`.
+
+> Note: Since this app is independently distributed, macOS may show a security prompt on first launch.
+> If needed, right-click `aaza.app` and select **Open** once.
 
 ## Run Locally
 

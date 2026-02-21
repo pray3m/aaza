@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 @main
 struct AazaMenuBarUtility: App {
     @StateObject private var dateController = MenuBarDateController()
