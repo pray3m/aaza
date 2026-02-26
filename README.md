@@ -1,15 +1,25 @@
-<img src="docs/assets/app-icon.png" alt="aaza app icon" width="64" height="64" />
+<h1 align="center">aaza (आज)</h1>
 
-# aaza (आज)
+<p align="center">A minimal macOS menu bar app for Bikram Sambat (Nepali) date.</p>
 
-A minimal macOS menu bar app for Bikram Sambat (Nepali) date.
+<p align="center">
+  <img src="docs/assets/banner.png" alt="aaza repo banner" width="720" />
+</p>
 
-[![Release](https://img.shields.io/github/v/release/pray3m/aaza)](https://github.com/pray3m/aaza/releases)
-![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)
-![SwiftUI](https://img.shields.io/badge/SwiftUI-native-orange)
-![License](https://img.shields.io/badge/license-MIT-blue)
+<p align="center">
+  <a href="https://github.com/pray3m/aaza/releases"><img src="https://img.shields.io/github/v/release/pray3m/aaza" alt="Release" /></a>
+  <img src="https://img.shields.io/badge/platform-macOS-lightgrey" alt="Platform" />
+  <img src="https://img.shields.io/badge/SwiftUI-native-orange" alt="SwiftUI" />
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+</p>
 
-`aaza` keeps today’s Nepali date visible in your macOS menu bar with a native, lightweight UI.
+<p align="center"><code>aaza</code> keeps today’s Nepali date visible in your macOS menu bar with a native, lightweight UI.</p>
+
+<h2 align="center">Screenshot</h2>
+
+<p align="center">
+  <img src="docs/assets/screenshot.png" alt="aaza menu bar screenshot" width="156" />
+</p>
 
 ## Features
 
